@@ -1,12 +1,39 @@
 export {themes as themes};
-const srcArr = [
-    "./images/makicons/1.webp",
-    "./images/makicons/2.webp",
-    "./images/makicons/3.webp",
-    "./images/makicons/4.webp",
-    "./images/makicons/5.webp",
-    "./images/makicons/6.webp",
-];
+const srcArr = (()=>{
+    if(window.location.pathname.includes("/pages/")){
+        return [
+            "../images/makicons/1.webp",
+            "../images/makicons/2.webp",
+            "../images/makicons/3.webp",
+            "../images/makicons/4.webp",
+            "../images/makicons/5.webp",
+            "../images/makicons/6.webp",
+        ];
+    }else{
+       return [
+            "./images/makicons/1.webp",
+            "./images/makicons/2.webp",
+            "./images/makicons/3.webp",
+            "./images/makicons/4.webp",
+            "./images/makicons/5.webp",
+            "./images/makicons/6.webp",
+        ];
+    }
+})();
+const logo = (()=>{
+    if(window.location.pathname.includes("/pages/")){
+        return [
+            "../images/logo.png",
+            "../images/logotoo.png",
+        ];
+    }else{
+       return [
+            "./images/logo.png",
+            "./images/logotoo.png",
+        ];
+    }
+})();
+
 const img = {"disSrc":"","title":"","artist":""};
 
 var currentTheme = "dark";
@@ -35,6 +62,7 @@ class themes {
      positionMakiCons();
      this.applyMakIcons();
      this.sideFilterClicksMob();
+     console.log({srcArr});
         
     }
 
@@ -156,13 +184,19 @@ const applyThisTheme= (theme)=>{
             }
         })
         //vice versa
-        document.querySelectorAll(".makitit,.hero p, div.caption h4,div.tag").forEach(ele=>{
+        document.querySelectorAll(".makirates li,.content ul li,.content p,.content h3,h1,.makitit,.hero p, div.caption h4,div.tag").forEach(ele=>{
             if(ele.nodeType){
                 ele.style.color = "#0B6342";
             }
         })
+        //.69px dotted #0B6342
+        document.querySelectorAll(".makirates li").forEach(ele=>{
+            if(ele.nodeType){
+                ele.style.border = ".69px dotted #0B6342";
+            }
+        })
         //whitetoblack
-        document.querySelectorAll(".footertop p,.social-links li a").forEach(ele=>{
+        document.querySelectorAll(".footertop p,.social-links li a,.gray-bg p,.content h4").forEach(ele=>{
             if(ele.nodeType){
                 ele.style.color = "#000000";
             }
@@ -178,7 +212,7 @@ const applyThisTheme= (theme)=>{
             }
         })
      
-        document.querySelectorAll(".brand")[0].querySelectorAll("img")[0].src ="./images/logotoo.png";
+        document.querySelectorAll(".brand")[0].querySelectorAll("img")[0].src =logo[1];
         currentTheme = "light";
         document.querySelectorAll(".themeop").forEach(e=>e.style.border = "none");
         document.querySelectorAll(".opt2")[0].style.border = ".69px dotted #0B6342";
@@ -194,13 +228,18 @@ const applyThisTheme= (theme)=>{
             }
         })
         //vice versa
-        document.querySelectorAll(".makitit,.hero p, div.caption h4,div.tag,.filter-container ul.filters li a.filter").forEach(ele=>{
+        document.querySelectorAll(".makirates li,.content ul li,.content p,.content h3,h1,.makitit,.hero p, div.caption h4,div.tag,.filter-container ul.filters li a.filter").forEach(ele=>{
             if(ele.nodeType){
                 ele.style.color = "#5FE8B4";
             }
         })
+        document.querySelectorAll(".makirates li").forEach(ele=>{
+            if(ele.nodeType){
+                ele.style.border = ".69px dotted #5FE8B4";
+            }
+        })
           //blacktowhite
-          document.querySelectorAll(".footertop p,.social-links li a").forEach(ele=>{
+          document.querySelectorAll(".footertop p,.social-links li a,.gray-bg p,.content h4").forEach(ele=>{
             if(ele.nodeType){
                 ele.style.color = "#fff";
             }
@@ -210,7 +249,7 @@ const applyThisTheme= (theme)=>{
                 ele.style.background = "#323e38";
             }
         })
-        document.querySelectorAll(".brand")[0].querySelectorAll("img")[0].src ="./images/logo.png";
+        document.querySelectorAll(".brand")[0].querySelectorAll("img")[0].src =logo[0];
         currentTheme = "dark";
         document.querySelectorAll(".themeop").forEach(e=>e.style.border = "none");
         document.querySelectorAll(".opt1")[0].style.border = ".69px dotted #0B6342";

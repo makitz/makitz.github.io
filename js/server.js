@@ -4,6 +4,7 @@ const artDataURL = "https://api.artic.edu/api/v1/artworks/";
 const artPicURL = (id)=>{
   return `https://www.artic.edu/iiif/2/${id}/full/843,/0/default.jpg`;
 };
+const emailURL = "https://script.google.com/macros/s/AKfycbw39czh1LjMDSNlVJjUueIwwLMSfzfyBMrzmEPaPeqXfs3UzCDdKSDqtFds7fhA_IPQ/exec?paraOne=makiwutwut"
 class server {
     
     constructor(){
@@ -11,6 +12,7 @@ class server {
         this.artDataURL = artDataURL;
         this.artPicURL = artPicURL;
         this.readDataURL = readDataURL;
+        this.emailURL = emailURL;
     
         
     }
@@ -21,15 +23,17 @@ const fetchInfoWithFilter = async (
   paraOne="",
   serverURL="",
   method='GET',
-  funcAfter = (val)=>{console.log("fetch succesful")}
+  funcAfter = (val)=>{console.log("fetch succesful")},
+  credentials = false
   )=>{
     const parameter = paraOne==="artpicget"?"":paraOne;
+    const credents = credentials?credentials:"omit";
     var myRequest = new Request(serverURL+""+parameter);
     const retVar = await fetch(myRequest,{
         method: method, // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: method==='GET'? "omit":'include', // include, *same-origin, omit
+        credentials: credents, // include, *same-origin, omit
         headers: {
           //'Access-Control-Allow-Headers':'x-requested-with, Content-Type, origin, authorization, accept, client-security-token',
           //'Content-Type': 'text/plain',

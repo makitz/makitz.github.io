@@ -1,3 +1,20 @@
+const obj = {
+  "params": [
+      {
+          "initVal": "initKey",
+          "action": "login",
+          "token": "letMeIn",
+          "dataObj": {"name":"Kil",
+                      "email":"Roy",
+                      "message":"WasHere!",
+                  "subject":"Vibes n Inshallah!"}
+      }
+  ]
+};
+
+var serverC = "";
+
+
 const string1 = (()=>{
   const string = {"str":""};
   if(window.location.hostname.includes("ismailisimba.github.io")){
@@ -21,14 +38,54 @@ const string1 = (()=>{
   })().then(({anime,theme,serve})=>{
     const themes = new theme.themes();
     const server = new serve.server();
+    serverC = server;
     document.querySelectorAll(".themeop").forEach(e=>{
       e.addEventListener("click",themes.addThemes);
     })
-    const animate = new anime.titleanimation();
+
+    if(window.location.pathname.includes("/pages/")){
+      if(window.location.pathname.includes("rates")||window.location.pathname.includes("about")||window.location.pathname.includes("contact")){
+          console.log("gothere")
+          const form = document.getElementById("send");
+          if (form.attachEvent) {
+              form.attachEvent("submit", processForm);
+          } else {
+              form.addEventListener("submit", processForm);
+              form.addEventListener("click", processForm)
+          }
+    
+        
+      }
+    }else{
+      const animate = new anime.titleanimation();
     animate.start();
+    }
     themes.getArt(server);
     window.setInterval(()=>{
       themes.getArt(server);
     },14692)
   });
+
+
+  const processForm = (e)=>{
+    e.preventDefault()
+    e.stopPropagation();
+    const form = e.composedPath()[2];
+    const name = form[0].value;
+    const number = form[1].value;
+    const email = form[2].value;
+    const websiteurl = form[3].value;
+    const message = `Website : ${websiteurl}<br>${form[4].value}`;
+
+    obj.params[0].dataObj = {name,email,number,message}
+
+       serverC.startFetch(
+          JSON.stringify(obj),
+          ``,
+          serverC.emailURL,
+          "POST"
+          )
+  
+
+  }
 

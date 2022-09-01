@@ -42,6 +42,8 @@ background-color: transparent;
 .btn.btn-default, .btn.btn-color {
     background: #0B6342;
     color: #fff;
+    border: .69px dotted #19E396;
+    cursor: pointer;
 }
 .centered-row{
     display: flex !important;
@@ -51,8 +53,63 @@ background-color: transparent;
     text-align: center;
 }
 
+.hero h1{
+    font-size: 29px;
+}
+
+.makirates {
+    width: 100%;
+    padding: 9px 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding-inline-start: 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+}
+.makirates li{
+    list-style: none;
+    width: 100%;
+    min-width: 100%;
+    margin-bottom: 6.9px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    box-sizing: border-box;
+    border: .69px dotted #0B6342;
+    padding: 6px 9px;
+}
+.makirates li span:first-child{
+    width: 50%;
+}
+.muhpeople{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+}
+
 .half-width{
     width: 69%;
+}
+
+.content{
+    z-index: 2 !important;
+}
+
+h1.abtquote{
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
 }
 
 .frontendshowcase1{
@@ -362,6 +419,14 @@ a.naviatheme,.opt1,.opt2{
     left: 0px;
     background-color:transparent;
     z-index: 1;
+}
+
+.gray-bg{
+    background: transparent;
+}
+
+.gray-bg p{
+    color: #14B376;
 }
 
 @media screen and (min-width: 600px) {
