@@ -1,4 +1,15 @@
-const string1 = window.location.hostname.includes("ismailisimba.github.io") ? "/home" : "/githome";
+const string1 = (()=>{
+  const string = {"str":""};
+  if(window.location.hostname.includes("ismailisimba.github.io")){
+    string.str = "/home";
+  }else if(window.location.hostname.includes("127.0.0.1")){
+    string.str = "/githome";
+  }else{
+    string.str = "";
+  }
+  
+  return string.str;
+})();
 (async () => {
       
     
