@@ -43,6 +43,8 @@ class themes {
 
     constructor(){
      this.addThemes = this.addThemes;
+     this.startload = startload;
+     this.stopload = stopload;
      this.applyThisTheme = applyThisTheme;
      this.applyMakIcons = this.applyMakIcons;
      this.getArt = getArt;
@@ -412,4 +414,23 @@ function fullImgTab(imgsrc,artist,title) {
     e.preventDefault();
      e.stopPropagation();
      fullImgTab(img.disSrc,img.title,img.artist);
+   }
+
+
+   const startload = (t)=>{
+    const span = document.querySelectorAll(".loading")[0].querySelectorAll("span")[0];
+    span.innerText = t;
+    window.scrollTo(0,0);
+    span.parentNode.style.display = "flex";
+    console.log(span);
+   }
+
+
+   const stopload = ()=>{
+    const span = document.querySelectorAll(".loading")[0].querySelectorAll("span")[0];
+    span.innerText = "idling...";
+    span.parentNode.style.display = "none";
+    pauseForTheseSeconds(200,()=>{
+        window.location.reload();
+    })
    }

@@ -13,6 +13,7 @@ const obj = {
 };
 
 var serverC = "";
+var animeC = "";
 
 
 const string1 = (()=>{
@@ -39,6 +40,7 @@ const string1 = (()=>{
     const themes = new theme.themes();
     const server = new serve.server();
     serverC = server;
+    animeC = themes;
     document.querySelectorAll(".themeop").forEach(e=>{
       e.addEventListener("click",themes.addThemes);
     })
@@ -68,6 +70,7 @@ const string1 = (()=>{
 
 
   const processForm = (e)=>{
+    animeC.startload("sending...");
     e.preventDefault()
     e.stopPropagation();
     const form = e.composedPath()[2];
@@ -83,7 +86,8 @@ const string1 = (()=>{
           JSON.stringify(obj),
           ``,
           serverC.emailURL,
-          "POST"
+          "POST",
+          animeC.stopload
           )
   
 

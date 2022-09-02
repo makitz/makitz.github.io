@@ -86,6 +86,21 @@ background-color: transparent;
     border: .69px dotted #0B6342;
     padding: 6px 9px;
 }
+
+.loading{
+    background-color: transparent;
+    display: none;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.loading span{
+    font-size: 22px;
+    font-weight: 700;
+    color: white !important;
+
+}
 .makirates li span:first-child{
     width: 50%;
 }
