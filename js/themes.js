@@ -192,7 +192,7 @@ const applyThisTheme= (theme)=>{
             }
         })
         //.69px dotted #0B6342
-        document.querySelectorAll(".makirates li").forEach(ele=>{
+        document.querySelectorAll(".makirates li, .specialcheck").forEach(ele=>{
             if(ele.nodeType){
                 ele.style.border = ".69px dotted #0B6342";
             }
@@ -235,7 +235,7 @@ const applyThisTheme= (theme)=>{
                 ele.style.color = "#5FE8B4";
             }
         })
-        document.querySelectorAll(".makirates li").forEach(ele=>{
+        document.querySelectorAll(".makirates li, .specialcheck").forEach(ele=>{
             if(ele.nodeType){
                 ele.style.border = ".69px dotted #5FE8B4";
             }
