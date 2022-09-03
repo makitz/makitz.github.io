@@ -86,9 +86,15 @@ background-color: transparent;
     border: .69px dotted #0B6342;
     padding: 6px 9px;
 }
+.makirates li.main{
+    margin-top: 22px !important;
+    border: none !important;
+    font-weight: bold !important;
+}
 
 .loading{
     background-color: transparent;
+    margin-top: 169px;
     display: none;
     flex-flow: column;
     justify-content: center;
@@ -100,6 +106,23 @@ background-color: transparent;
     font-weight: 700;
     color: white !important;
 
+}
+
+a.fa-whatsapp{
+    width: 100% !important;
+}
+a.fa-whatsapp:hover{
+    text-decoration: none !important;
+}
+.fa-whatsapp::before{
+    text-align: center !important;
+    font-size: 42px !important;
+    display: block;
+}
+.fa-whatsapp.home::before{
+    text-align: center !important;
+    font-size: 24px !important;
+    display: block;
 }
 .makirates li span:first-child{
     width: 50%;
@@ -562,5 +585,24 @@ a.naviatheme,.opt1,.opt2{
     }
     .popuppart{
         left: 0px;
+    }
+    a.home{
+        font-size: 11px !important;
+    }
+
+    .makirates li {
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+    }
+    .makirates li span {
+        width: 100% !important;
+    }
+    .makirates li span:first-child {
+        margin-bottom: 12px;
+    }
+    .makirates li span:last-child {
+        font-weight: bold;
     }
   }

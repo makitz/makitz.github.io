@@ -34,6 +34,13 @@ const logo = (()=>{
     }
 })();
 
+const socials = [
+    "https://www.youtube.com/channel/UCkr-VssqXXWN5imP5_vONMQ",
+    "https://twitter.com/makidigitali",
+    "https://www.instagram.com/makidigitali",
+    "https://www.facebook.com/makidigitali",
+    "https://www.linkedin.com/company/makidigitali",]
+
 const img = {"disSrc":"","title":"","artist":""};
 
 var currentTheme = "dark";
@@ -49,6 +56,7 @@ class themes {
      this.applyMakIcons = this.applyMakIcons;
      this.getArt = getArt;
      this.makIconAnime = 0;
+     this.addSocials = addSocials;
      this.currentTheme = currentTheme;
      this.sideFilterClicksMob = sideFilterClicksMob;
 
@@ -62,9 +70,9 @@ class themes {
         this.applyThisTheme("light");
      }
      positionMakiCons();
+     addSocials();
      this.applyMakIcons();
      this.sideFilterClicksMob();
-     console.log({srcArr});
         
     }
 
@@ -198,7 +206,7 @@ const applyThisTheme= (theme)=>{
             }
         })
         //whitetoblack
-        document.querySelectorAll(".footertop p,.social-links li a,.gray-bg p,.content h4").forEach(ele=>{
+        document.querySelectorAll("a.home,.footertop p,.social-links li a,.gray-bg p,.content h4").forEach(ele=>{
             if(ele.nodeType){
                 ele.style.color = "#000000";
             }
@@ -241,7 +249,7 @@ const applyThisTheme= (theme)=>{
             }
         })
           //blacktowhite
-          document.querySelectorAll(".footertop p,.social-links li a,.gray-bg p,.content h4").forEach(ele=>{
+          document.querySelectorAll("a.home,.footertop p,.social-links li a,.gray-bg p,.content h4").forEach(ele=>{
             if(ele.nodeType){
                 ele.style.color = "#fff";
             }
@@ -359,27 +367,27 @@ function fullImgTab(imgsrc,artist,title) {
         return valarr;
     })();
     console.log(someVals);
+    newTab.document.head.innerHTML =`
+    <head>
+    <title>
+    ${title+" - "+artist}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    </head>`;
     newTab.document.body.innerHTML = `
-    <img
-    style="
-    display:block;
-    position:relative;
-    margin:0 auto;
-    " 
-    src="${imgsrc}" width="100%" height="auto" style="display:block; margin:0 auto;">
-
     <p class="popuppart"style="
-    position: absolute;
+    position: relative;
     margin:0 auto;
     font-family: 'Merriweather';
+    font-size: 32px;
     background-color:#0B6342;
     color:white !important;
     padding:6px 9px;
-    top:69vh;
+    top:0px;
     left:${someVals[0].left};
     width:${someVals[1].width};
     box-sizing:border-box;
-    height:69px;
+    height:max-content;
     display:flex;
     flex-flow:column;
     justify-content:center;
@@ -388,6 +396,14 @@ function fullImgTab(imgsrc,artist,title) {
     <span>by</span>
     <span>${title}</span>
     <p>
+
+    <img
+    style="
+    display:block;
+    position:relative;
+    margin:0 auto;
+    " 
+    src="${imgsrc}" width="100%" height="auto" style="display:block; margin:0 auto;">
     `;
   
     return "ifrm.location.href";
@@ -433,4 +449,39 @@ function fullImgTab(imgsrc,artist,title) {
     pauseForTheseSeconds(200,()=>{
         window.location.reload();
     })
+   }
+
+
+   const addSocials = ()=>{
+    const facebook = document.querySelectorAll(".fa-facebook")[0];
+    const youtube = document.querySelectorAll(".fa-youtube")[0];
+    const instagram = document.querySelectorAll(".fa-instagram")[0];
+    const twitter = document.querySelectorAll(".fa-twitter")[0];
+    const linkedin = document.querySelectorAll(".fa-linkedin")[0];
+    const contdeets = document.querySelectorAll(".footertop div")[2].querySelectorAll("p")[0];
+    
+
+    facebook.setAttribute("href",socials[3]);
+    youtube.setAttribute("href",socials[0]);
+    instagram.setAttribute("href",socials[2]);
+    twitter.setAttribute("href",socials[1]);
+    linkedin.setAttribute("href",socials[4]);
+    console.log(window.screen.availWidth)
+    if(window.screen.width>992){
+        contdeets.innerHTML = `
+        <a style="font-weight:300; font-size:12px;" href="https://makitz.github.io" target="_blank" class="home">makitz.github.io</a>
+        <a style="font-weight:300; font-size:12px;" href="tel:+255767869783" class="home">+255 767 869 783</a>
+        <a style="font-weight:300; font-size:12px;" href="mailto:maudhuikidigitali@gmail.com" class="home">maudhuikidigitali@gmail.com</a>
+        <a style="font-weight:300; font-size:12px !important;" href="https://wa.me/message/ZWUNX4DKULZBH1" target="_blank" class="fa fa-whatsapp home" style="width:169px;"></a>
+        `;
+    }else{
+        contdeets.innerHTML = `
+        <a style="font-weight:300;" href="https://makitz.github.io" target="_blank" class="home">makitz.github.io</a>
+        <a style="font-weight:300;" href="tel:+255767869783" class="home">+255 767 869 783</a>
+        <a style="font-weight:300; margin-top:12px;" href="mailto:maudhuikidigitali@gmail.com" class="home">maudhuikidigitali<br>@gmail.com</a>
+        <a style="font-weight:300; !important;" href="https://wa.me/message/ZWUNX4DKULZBH1" target="_blank" class="fa fa-whatsapp home" style="width:169px;"></a>
+        `;
+
+    }
+   
    }

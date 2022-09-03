@@ -71,7 +71,7 @@ const string1 = (()=>{
 
   const processForm = (e)=>{
     animeC.startload("sending...");
-    e.preventDefault()
+    e.preventDefault();
     e.stopPropagation();
     const form = e.composedPath()[2];
     const name = form[0].value;
