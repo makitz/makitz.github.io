@@ -369,40 +369,58 @@ function fullImgTab(imgsrc,artist,title) {
     console.log(someVals);
     newTab.document.head.innerHTML =`
     <head>
+    <link rel="stylesheet" type="text/css" href="https://makitz.github.io/css/core.css">
+    <link rel="stylesheet" type="text/css" href="https://makitz.github.io/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://makitz.github.io/css/custom.css">
+    <link rel="icon" type="image/png" href="https://makitz.github.io/favicon.png?version=1">
     <title>
     ${title+" - "+artist}
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     </head>`;
     newTab.document.body.innerHTML = `
-    <p class="popuppart"style="
-    position: relative;
-    margin:0 auto;
-    font-family: 'Merriweather';
-    font-size: 32px;
-    background-color:#0B6342;
-    color:white !important;
-    padding:6px 9px;
-    top:0px;
-    left:${someVals[0].left};
-    width:${someVals[1].width};
-    box-sizing:border-box;
-    height:max-content;
-    display:flex;
-    flex-flow:column;
-    justify-content:center;
-    align-items:center;">
+    <style>
+    p.popuppart{
+        position: relative;
+        margin:0 auto;
+        font-family: 'Merriweather';
+        font-size: 24px;
+        font-weight:bold;
+        background-color:#0B6342;
+        color:white !important;
+        padding:6px 9px;
+        top:0px;
+        left:${someVals[0].left};
+        width:${someVals[1].width};
+        box-sizing:border-box;
+        height:max-content;
+        display:flex;
+        flex-flow:column;
+        justify-content:center;
+        align-items:center;
+    }
+    img.artpop{
+        display:block;
+        position:relative;
+        margin:0 auto;
+    }
+    @media screen and (max-width: 992px){
+        p.popuppart{
+            position: relative;
+            margin:0 auto;
+            font-family: 'Merriweather';
+            font-size: 16px;
+        }
+    }
+    </style>
+    <p class="popuppart">
     <span>${artist}</span>
     <span>by</span>
     <span>${title}</span>
     <p>
 
     <img
-    style="
-    display:block;
-    position:relative;
-    margin:0 auto;
-    " 
+    class="artpop" 
     src="${imgsrc}" width="100%" height="auto" style="display:block; margin:0 auto;">
     `;
   
@@ -476,10 +494,10 @@ function fullImgTab(imgsrc,artist,title) {
         `;
     }else{
         contdeets.innerHTML = `
-        <a style="font-weight:300;" href="https://makitz.github.io" target="_blank" class="home">makitz.github.io</a>
-        <a style="font-weight:300;" href="tel:+255767869783" class="home">+255 767 869 783</a>
+        <a style="font-weight:300; " href="https://makitz.github.io" target="_blank" class="home">makitz.github.io</a>
+        <a style="font-weight:300; margin-top:12px;" href="tel:+255767869783" class="home">+255 767 869 783</a>
         <a style="font-weight:300; margin-top:12px;" href="mailto:maudhuikidigitali@gmail.com" class="home">maudhuikidigitali<br>@gmail.com</a>
-        <a style="font-weight:300; !important;" href="https://wa.me/message/ZWUNX4DKULZBH1" target="_blank" class="fa fa-whatsapp home" style="width:169px;"></a>
+        <a style="font-weight:300; !important; margin-top:12px; margin-bottom:28px;" href="https://wa.me/message/ZWUNX4DKULZBH1" target="_blank" class="fa fa-whatsapp home" style="width:169px;"></a>
         `;
 
     }
