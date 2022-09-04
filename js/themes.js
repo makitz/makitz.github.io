@@ -69,6 +69,7 @@ class themes {
         this.currentTheme = "light";
         this.applyThisTheme("light");
      }
+     pageVisibilityActs();
      positionMakiCons();
      addSocials();
      this.applyMakIcons();
@@ -438,7 +439,7 @@ function fullImgTab(imgsrc,artist,title) {
         val.w = parseInt(val.w,10);
     })
     const leftVal = (vals[0].w-vals[1].w)/2;
-    console.log(leftVal);
+    if(leftVal<0)window.location.reload();
     document.querySelectorAll(".frame")[0].style.left = leftVal+"px";
   }
 
@@ -503,3 +504,55 @@ function fullImgTab(imgsrc,artist,title) {
     }
    
    }
+
+   const pageVisibilityActs = ()=> {
+    var hidden = "hidden";
+  
+    // Standards:
+    if (hidden in document)
+      document.addEventListener("visibilitychange", onchange);
+    else if ((hidden = "mozHidden") in document)
+      document.addEventListener("mozvisibilitychange", onchange);
+    else if ((hidden = "webkitHidden") in document)
+      document.addEventListener("webkitvisibilitychange", onchange);
+    else if ((hidden = "msHidden") in document)
+      document.addEventListener("msvisibilitychange", onchange);
+    // IE 9 and lower:
+    else if ("onfocusin" in document)
+      document.onfocusin = document.onfocusout = onchange;
+    // All others:
+    else
+      window.onpageshow = window.onpagehide
+      = window.onfocus = window.onblur = onchange;
+  
+    function onchange (evt) {
+      var v = "visible", h = "hidden",
+          evtMap = {
+            focus:v, focusin:v, pageshow:v, blur:h, focusout:h, pagehide:h
+          };
+  
+      evt = evt || window.event;
+      if (evt.type in evtMap){
+        if(document.body.classList.contains("hidden")){
+            document.body.classList.remove("hidden");
+            //window.location.reload();
+            positionMakiCons();
+        }else{
+            document.body.classList.add(evtMap[evt.type]);
+            
+        }
+      }else{
+        if(document.body.classList.contains("hidden")){
+            document.body.classList.remove("hidden");
+            //window.location.reload();
+            positionMakiCons();
+        }else{
+            document.body.classList.add(this[hidden] ? "hidden" : "visible");
+        }
+      }      
+    }
+  
+    // set the initial state (but only if browser supports the Page Visibility API)
+    if( document[hidden] !== undefined )
+      onchange({type: document[hidden] ? "blur" : "focus"});
+  };

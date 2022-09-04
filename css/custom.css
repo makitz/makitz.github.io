@@ -605,4 +605,8 @@ a.naviatheme,.opt1,.opt2{
     .makirates li span:last-child {
         font-weight: bold;
     }
+    .clients img{
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
   }
