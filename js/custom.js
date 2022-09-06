@@ -34,9 +34,10 @@ const string1 = (()=>{
       const anime = await import(string1+"/js/titleanimation.js");
       const theme = await import(string1+"/js/themes.js");
       const serve = await import(string1+"/js/server.js");
+      const googan = await import("https://www.googletagmanager.com/gtag/js?id=G-ENZL0PWCH0");
     
-    return {anime,theme,serve};
-  })().then(({anime,theme,serve})=>{
+    return {anime,theme,serve,googan};
+  })().then(({anime,theme,serve,googan})=>{
     const themes = new theme.themes();
     const server = new serve.server();
     serverC = server;
@@ -66,6 +67,17 @@ const string1 = (()=>{
     window.setInterval(()=>{
       themes.getArt(server);
     },14692)
+    console.log(googan);
+
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ENZL0PWCH0');
+  const meta = document.createElement("meta");
+  meta.name = `google-site-verification`;
+  meta.content = `wSzcNyp9exETjj0c3TU0wf4ZueB6G4HNiUdM7Rqs7r8`;
+  document.head.appendChild(meta);
   });
 
 
