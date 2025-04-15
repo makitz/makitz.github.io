@@ -21,7 +21,7 @@ const string1 = (()=>{
   if(window.location.hostname.includes("ismailisimba.github.io")){
     string.str = "/home";
   }else if(window.location.hostname.includes("127.0.0.1")){
-    string.str = "/githome";
+    string.str = "/makitz.github.io";
   }else{
     string.str = "";
   }
